@@ -28,7 +28,10 @@ ExportedObj/
 *.svd
 *.pdb
 *.opendb
+<<<<<<< HEAD
 *.log
+=======
+>>>>>>> 0093bf8d (Game scene created. Character movement defined.)
 
 # Unity3D generated meta files
 *.pidb.meta
