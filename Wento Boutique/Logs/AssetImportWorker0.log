@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Using pre-set license
 Built from '2021.3/staging' branch; Version is '2021.3.2f1 (d6360bedb9a0) revision 14038539'; Using compiler version '192829333'; Build Type 'Release'
 OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'pt' Physical Memory: 16318 MB
@@ -411,3 +412,5 @@ Received Import Request.
   path: Assets/_Project/Sprites/Scenery/Palettes/Interiors_free_32x32_26.asset
   artifactKey: Guid(f6354a88e90a83c449e362fecd7b9f25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/_Project/Sprites/Scenery/Palettes/Interiors_free_32x32_26.asset using Guid(f6354a88e90a83c449e362fecd7b9f25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f069ff3af2dcc9095885a07272949938') in 0.011584 seconds 
+=======
+>>>>>>> c62f27ac (Canvas for trying clothes out created with scroll lists for each type (hat, hair, clothes) receiving some pre-information. Tilemap scenery created. Colliders working.)
