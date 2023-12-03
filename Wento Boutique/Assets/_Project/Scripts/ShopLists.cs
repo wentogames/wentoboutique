@@ -18,19 +18,19 @@ public class ShopLists : MonoBehaviour
         foreach (var item in hairList)
         {
             var newItem = Instantiate(itemPrefab, hairListContent);
-            newItem.GetComponent<ShopItem>().PopulatePrefab(item.itemName, item.sprite);
+            newItem.GetComponent<ShopItem>().PopulatePrefab(item);
         }
 
         foreach (var item in hatList)
         {
             var newItem = Instantiate(itemPrefab, hatListContent);
-            newItem.GetComponent<ShopItem>().PopulatePrefab(item.itemName, item.icon);
+            newItem.GetComponent<ShopItem>().PopulatePrefab(item);
         }
 
         foreach (var item in clothesList)
         {
             var newItem = Instantiate(itemPrefab, clothesListContent);
-            newItem.GetComponent<ShopItem>().PopulatePrefab(item.itemName, item.icon);
+            newItem.GetComponent<ShopItem>().PopulatePrefab(item);
         }
     }
 }

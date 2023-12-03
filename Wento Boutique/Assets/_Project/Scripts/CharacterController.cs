@@ -6,6 +6,7 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField] Transform characterTransform;
     [SerializeField] Animator characterAnimator;
+    [SerializeField] BoxCollider2D characterCollider;
     [SerializeField] float multiplier;
 
     private bool _canMove;
@@ -15,10 +16,11 @@ public class CharacterController : MonoBehaviour
 
     private const string HorizontalAxis = "Horizontal";
     private const string VerticalAxis = "Vertical";
-    private const string xMovementParameter = "xMovement";
-    private const string yMovementParameter = "yMovement";
-    private const string zeroMovementParameter = "zeroMovement";
-    private const float movementThreshold = 0.01f;
+    private const string XMovementParameter = "xMovement";
+    private const string YMovementParameter = "yMovement";
+    private const string ZeroMovementParameter = "zeroMovement";
+    private const float MovementThreshold = 0.01f;
+    private const string MirrorTag = "Mirror";
 
 
     void Start()
@@ -54,31 +56,46 @@ public class CharacterController : MonoBehaviour
 
     void ChangeAnimation(Vector2 direction)
     {
-        Debug.Log("dir: " + direction);
         if (direction == Vector2.zero)
         {
-            characterAnimator.SetBool(zeroMovementParameter, true);
+            characterAnimator.SetBool(ZeroMovementParameter, true);
         }
         else if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
         {
-            Debug.Log("dir y: " + direction.y);
-            characterAnimator.SetFloat(yMovementParameter, direction.y);
-            characterAnimator.SetFloat(xMovementParameter, 0);
-            characterAnimator.SetBool(zeroMovementParameter, false);
+            characterAnimator.SetFloat(YMovementParameter, direction.y);
+            characterAnimator.SetFloat(XMovementParameter, 0);
+            characterAnimator.SetBool(ZeroMovementParameter, false);
         }
         else if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            Debug.Log("dir y: " + direction.x);
-            characterAnimator.SetFloat(xMovementParameter, direction.x);
-            characterAnimator.SetFloat(yMovementParameter, 0);
-            characterAnimator.SetBool(zeroMovementParameter, false);
+            characterAnimator.SetFloat(XMovementParameter, direction.x);
+            characterAnimator.SetFloat(YMovementParameter, 0);
+            characterAnimator.SetBool(ZeroMovementParameter, false);
         }
     }
 
     bool IsOnThreshold(Vector2 direction)
     {
-        if (Mathf.Abs(direction.x) < movementThreshold && Mathf.Abs(direction.y) < movementThreshold)
+        if (Mathf.Abs(direction.x) < MovementThreshold && Mathf.Abs(direction.y) < MovementThreshold)
             return true;
         return false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("OnTriggerEnter2D: " + collision.gameObject.name);
+        if (collision.gameObject.tag == MirrorTag)
+        {
+            CanvasManager.Instance.ToggleShortcutPanel(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("OnCollisionExit2D: " + collision.gameObject.name);
+        if (collision.gameObject.tag == MirrorTag)
+        {
+            CanvasManager.Instance.ToggleShortcutPanel(false);
+        }
     }
 }

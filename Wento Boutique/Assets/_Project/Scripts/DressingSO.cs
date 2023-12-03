@@ -9,4 +9,6 @@ public class DressingSO : ScriptableObject
     public Sprite icon;
     public Sprite sprite;
     public Type type;
+    public int itemId;
+    public int price;
 }

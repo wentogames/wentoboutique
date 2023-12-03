@@ -7,11 +7,20 @@ using TMPro;
 public class ShopItem : MonoBehaviour
 {
     [SerializeField] TMP_Text nameText;
-    [SerializeField] Image itemImage;
+    [SerializeField] Image itemIcon;
+    [SerializeField] TMP_Text priceText;
+    private DressingSO _scriptableObject;
 
-    public void PopulatePrefab(string name, Sprite sprite)
+    public void PopulatePrefab(DressingSO scriptable)
     {
-        nameText.text = name;
-        itemImage.sprite = sprite;
+        nameText.text = scriptable.name;
+        itemIcon.sprite = scriptable.icon;
+        _scriptableObject = scriptable;
+        priceText.text = scriptable.price.ToString();
+    }
+
+    public void WearItem()
+    {
+        AvatarCustomizer.Instance.WearItem(_scriptableObject);
     }
 }
