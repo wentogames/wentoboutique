@@ -26,8 +26,16 @@ public class CanvasManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (!fittingRoomPanel.activeSelf)
+            {
                 fittingRoomPanel.SetActive(true);
+                ShopLists.Instance.LoadItems();
+            }
         }
+    }
+
+    public void CloseFittingRoomPanel()
+    {
+        fittingRoomPanel.SetActive(false);
     }
 
     public void ToggleShortcutPanel(bool show)

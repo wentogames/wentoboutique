@@ -17,3 +17,5 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 62b28ae1f18daf2478f04148bebd8908, type: 3}
   type: 0
   itemId: 0
+  price: 0
+  ownedItem: 1

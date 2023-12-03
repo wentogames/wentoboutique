@@ -16,5 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 7dd3006f37cab864392f30e1de12538a, type: 3}
   sprite: {fileID: 199218725, guid: 17d02d8c1d13c8d4cad69b464e6468bf, type: 3}
   type: 2
-  itemId: 3
+  itemId: 9
   price: 400
+  ownedItem: 0

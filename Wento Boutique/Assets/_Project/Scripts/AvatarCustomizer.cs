@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AvatarCustomizer : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class AvatarCustomizer : MonoBehaviour
     [SerializeField] Image avatarHairImage;
     [SerializeField] Image avatarHatImage;
     [SerializeField] Image avatarClothesImage;
+    [SerializeField] TMP_Text cartPriceText;
+
+    private int _totalPrice = 0;
+    private List<int> _cartIdList = new List<int>();
 
     private void Start()
     {
@@ -35,6 +40,28 @@ public class AvatarCustomizer : MonoBehaviour
         else
         {
             avatarClothesImage.sprite = obj.sprite;
+        }
+    }
+
+    public void AddToCart(DressingSO obj)
+    {
+        _totalPrice += obj.price;
+        cartPriceText.text = _totalPrice.ToString();
+        _cartIdList.Add(obj.itemId);
+    }
+
+    public void RemoveFromCart(DressingSO obj)
+    {
+        _totalPrice -= obj.price;
+        cartPriceText.text = _totalPrice.ToString();
+        _cartIdList.Remove(obj.itemId);
+    }
+
+    public void PurchaseItems()
+    {
+        foreach (int id in _cartIdList)
+        {
+            PlayerInventory.Instance.AddToOwnedItems(id);
         }
     }
 }

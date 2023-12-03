@@ -28,7 +28,7 @@ public class CharacterController : MonoBehaviour
         _canMove = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(_canMove)
             OnInputDown();
@@ -83,7 +83,6 @@ public class CharacterController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerEnter2D: " + collision.gameObject.name);
         if (collision.gameObject.tag == MirrorTag)
         {
             CanvasManager.Instance.ToggleShortcutPanel(true);
@@ -92,7 +91,6 @@ public class CharacterController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("OnCollisionExit2D: " + collision.gameObject.name);
         if (collision.gameObject.tag == MirrorTag)
         {
             CanvasManager.Instance.ToggleShortcutPanel(false);

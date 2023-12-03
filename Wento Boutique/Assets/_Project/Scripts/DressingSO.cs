@@ -11,4 +11,5 @@ public class DressingSO : ScriptableObject
     public Type type;
     public int itemId;
     public int price;
+    public bool ownedItem;
 }
